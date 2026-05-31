@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Experiment artefacts
+checkpoints/
+runs/
+logs/
+*.log
+*.pth
+*.ckpt
+
+# Datasets and generated plans / features
+data/raw/
+data/processed/
+*/data/
+*/plans/
+*/feats/
+*.npz
+*.nii
+*.nii.gz
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

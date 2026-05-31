@@ -386,7 +386,7 @@ class NetworkTrainer(object):
         if (dim == 2):
             strt = ndimage.generate_binary_structure(2, 1)
         else:
-            strt = ndimage.generate_binary_structure(3, 1)  # 三维结构元素，与中心点相距1个像素点的都是邻域
+            strt = ndimage.generate_binary_structure(3, 1)  # 3D structuring element: 6-connectivity neighborhood
         ero = ndimage.morphology.binary_erosion(img, strt)
         edge = np.asarray(img, np.uint8) - np.asarray(ero, np.uint8)
         return edge

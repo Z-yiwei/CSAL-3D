@@ -1,4 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Author      : Han Liu
+# Date Created: 02/11/2023
+
+# Program description
+# Run the pipeline to measure the representativeness via image reconstruction
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 from monai.transforms import *
 from monai.utils import set_determinism
@@ -8,8 +17,6 @@ from data_loading.AL_Loader import AL_Loader
 from transform.BasicTransform import BasicTransform
 from models.NetworkLoader import NetworkLoader
 from inference.FeatureExtracter_plus import FeatureExtracter
-# from inference.FeatureExtractor_vqvae import FeatureExtracter
-from inference.FeatureExtracter_plus import FeatureExtracter_slicing_window
 
 
 def main() -> None:

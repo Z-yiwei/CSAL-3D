@@ -1,0 +1,25 @@
+# Core deep-learning stack
+torch==2.3.1
+monai>=1.3.0
+
+# Scientific computing
+numpy>=1.22
+scipy>=1.8
+scikit-learn>=1.1
+
+# Medical-image I/O and processing
+SimpleITK>=2.2
+nibabel>=4.0
+GeodisTK>=0.1.7
+
+# Model / augmentation back-ends
+timm>=0.6.0
+batchgenerators>=0.25
+einops>=0.6.0
+
+# Utilities
+tqdm>=4.64
+pytz>=2022.1
+
+# Optional: only needed by data/BRaTS_download.py
+# kagglehub>=0.2.0

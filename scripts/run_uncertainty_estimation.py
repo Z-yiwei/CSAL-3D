@@ -5,7 +5,9 @@
 
 # Program description
 # Run the pipeline to measure the uncertainty with MC Dropout
-
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from monai.utils import set_determinism
 from options.options import Options
@@ -37,5 +39,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-

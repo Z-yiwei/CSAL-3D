@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Author      : Han Liu
-# Date Created: 02/11/2023
+# Date Created: 02/08/2023
+
 
 # Program description
-# Run the pipeline to measure the representativeness via image reconstruction
+# proxy task: generate a noisy binary segmentation mask (pseudo label) for supervision.
 import os
-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
-from monai.transforms import *
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from monai.utils import set_determinism
 from options.options import Options
 from utils.util import parse_options
-from data_loading.AL_Loader import AL_Loader
+from data_loading.BasicLoader import BasicLoader
 from transform.BasicTransform import BasicTransform
 from models.NetworkLoader import NetworkLoader
-from inference.FeatureExtracter_plus import FeatureExtracter
+from network_training.TrainerV2 import TrainerV2
 
 
 def main() -> None:
-    opt = parse_options(Options(), save_config=False)
+    opt = parse_options(Options())
 
     # reproducibility
     set_determinism(seed=opt.seed)  
@@ -28,11 +30,15 @@ def main() -> None:
         num_samples=opt.num_samples,
         modality=opt.modality)
 
-    data = AL_Loader(tr=transform, opt=opt)
+    data = BasicLoader(
+        tr=transform, 
+        opt=opt, 
+        phase='train',
+        folder_name='proxy_data')
 
     model = NetworkLoader(opt).load()
 
-    FeatureExtracter(data=data, model=model, opt=opt).extract(mode=opt.mode)
+    TrainerV2(data=data, model=model, opt=opt).run()
 
 
 if __name__ == "__main__":

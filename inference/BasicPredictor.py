@@ -164,7 +164,7 @@ class BasicPredictor(object):
                     if self.opt.save_output:
                         pred = torch.argmax(pred.squeeze(0), dim=0).detach().cpu().numpy().astype('uint8')
                         pred = np.transpose(pred, (2, 1, 0)) 
-                        # NIfTIG格式中，深度在第一维。
+                        # In NIfTI format the depth axis comes first.
                         
                         sitk_image = create_sitkImage(pred)
                         sitk.WriteImage(sitk_image, osp.join(self.result_dir, f'{sub}_pred.nii.gz'))
