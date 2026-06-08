@@ -11,7 +11,7 @@
 [![MONAI](https://img.shields.io/badge/MONAI-1.3%2B-00A6D6.svg)](https://monai.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Official implementation** of our MICCAI 2025 paper — **shortlisted for the Best Paper & Young Scientist Award**.
+**Official implementation** of our MICCAI 2025 paper, **shortlisted for the Best Paper & Young Scientist Award**.
 
 Ning Zhu, Ping Ye, Lanfeng Zhong, Qiang Yue, Shaoting Zhang, Guotai Wang
 
