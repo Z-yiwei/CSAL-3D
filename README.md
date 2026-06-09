@@ -61,26 +61,26 @@ The resulting set is simultaneously **diverse** (covers the data distribution) a
 
 ```
 CSAL-3D/
-├── active_learning/         # Cold-start sample-selection strategies
-│   ├── urds.py              #   → URDS (ours): urds / div-only / unc-only
-│   └── baselines.py         #   → FPS, TypiClust, CALR, ALPS, ProbCover, USL, USL-T, Core-Set
-├── data/                    # Dataset download, conversion & list-generation scripts
-├── data_loading/            # Dataset loaders (BasicLoader, AL_Loader)
-├── transform/               # MONAI-based pre-processing / augmentation pipelines
-├── models/                  # Network zoo (Swin-UNETR SSL head, nnUNet/Generic-UNet, …)
-├── network_training/        # Trainers for SSL pre-training & segmentation
-├── inference/               # Predictor, feature extractor & uncertainty estimator
-├── loss_functions/          # Deep-supervision loss wrappers
-├── utils/                   # Shared utilities (ops, losses, metrics, views, I/O)
-├── options/                 # Centralized argument parser
-├── assets/                  # Figures used in the README (e.g. Workflow.png)
-└── scripts/                 # Pipeline entry points
-    ├── run_training_recon.py        # CSAL-adapted SSL pre-training
-    ├── run_feature_extraction.py    # Extract 3D-aware features
-    ├── run_uncertainty_estimation.py# Ensemble-based uncertainty estimation
-    ├── run_training.py              # Segmentation training (nnUNet) on the selected subset
-    ├── run_inference.py             # Segmentation inference & evaluation
-    └── run_training_proxy.py        # Proxy-task baseline (for comparison)
+├── active_learning/         
+│   ├── urds.py              
+│   └── baselines.py         
+├── data/                    
+├── data_loading/            
+├── transform/               
+├── models/                  
+├── network_training/        
+├── inference/               
+├── loss_functions/          
+├── utils/                   
+├── options/                 
+├── assets/                  
+└── scripts/                 
+    ├── run_training_recon.py        
+    ├── run_feature_extraction.py    
+    ├── run_uncertainty_estimation.py
+    ├── run_training.py              
+    ├── run_inference.py             
+    └── run_training_proxy.py        
 ```
 
 ## Installation
