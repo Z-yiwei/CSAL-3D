@@ -1,8 +1,7 @@
 <div align="center">
 
-# CSAL-3D
 
-### Cold-Start Active Learning for 3D Medical Image Segmentation via SSL-Driven Uncertainty-Reinforced Diversity Sampling
+### CSAL-3D: Cold-Start Active Learning for 3D Medical Image Segmentation via SSL-Driven Uncertainty-Reinforced Diversity Sampling
 
 [![Conference](https://img.shields.io/badge/MICCAI-2025-1a73e8.svg)](https://www.miccai.org/)
 [![Award](https://img.shields.io/badge/MICCAI'25-Best%20Paper%20%26%20Young%20Scientist%20Award%20Shortlist-FFD700.svg)](https://www.miccai.org/)
