@@ -122,70 +122,7 @@ python data/generate_list.py      # build train / val splits
 
 All scripts share the unified options in [`options/options.py`](options/options.py).
 
-### 1 · CSAL-adapted SSL pre-training
 
-Pre-train the Swin-UNETR backbone with the inpainting + rotation + cross-view-consistency objective:
-
-```bash
-python scripts/run_training_recon.py -n ssl -o BrainTumour -c 2 -m mr
-```
-
-### 2 · Feature extraction
-
-Extract 3D-aware features for every unlabeled volume:
-
-```bash
-python scripts/run_feature_extraction.py -n ssl -o BrainTumour -c 2 -m mr
-# → ./BrainTumour/feats/Ours.npz
-```
-
-### 3 · Ensemble-based uncertainty estimation
-
-Compute sample-level uncertainty `S(X)` from the multi-view reconstruction ensemble:
-
-```bash
-python scripts/run_uncertainty_estimation.py -n ssl -o BrainTumour -c 2 -m mr
-# → ./BrainTumour/feats/Ours_scores.tsv
-```
-
-### 4 · URDS sample selection
-
-Select the annotation set with **URDS** (our method):
-
-```bash
-python -m active_learning.urds urds \
-    --organ BrainTumour \
-    --feats  ./BrainTumour/feats/Ours.npz \
-    --scores ./BrainTumour/feats/Ours_scores.tsv \
-    --num-samples 20 --ncand 3
-# → ./BrainTumour/plans/URDS_20.npz
-```
-
-Ablation variants:
-
-```bash
-# Diversity only — most typical sample per cluster
-python -m active_learning.urds div-only --organ Heart --feats ./Heart/feats/Ours.npz --num-samples 4
-
-# Uncertainty only — globally most uncertain samples
-python -m active_learning.urds unc-only --organ Heart --feats ./Heart/feats/Ours.npz \
-    --scores ./Heart/feats/Ours_scores.tsv --num-samples 4
-```
-
-### 5 · Segmentation training on the selected subset
-
-Train the nnUNet segmentation model on the selected volumes via the generated plan:
-
-```bash
-python scripts/run_training.py -n csal_seg -o BrainTumour -c 2 -m mr \
-    --plan ./BrainTumour/plans/URDS_20.npz
-```
-
-### 6 · Inference & evaluation
-
-```bash
-python scripts/run_inference.py -n csal_seg -o BrainTumour -c 2 -m mr --save_output
-```
 
 ## Citation
 
